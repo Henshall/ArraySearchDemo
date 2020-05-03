@@ -1,19 +1,27 @@
 <?php 
 
-class HashTablesDemo
+require __DIR__ . '/vendor/autoload.php';
+
+use Jihel\Library\RBTree\Tree as Tree;
+use Jihel\Library\RBTree\Node;
+
+class ArraySearchDemo
 {
     private $searchableArray;
     private $loopTimes = 700000;
     private $hashArray;
     private $associativeArray;
     private $numItemsInSearchableArray;
+    private $binarySearchTree;
+    private $node;
     
     function __construct($searchableArray)
     {
         $this->searchableArray = $searchableArray;    
         $this->numItemsInSearchableArray = count($this->searchableArray);
         $this->hashArray = $this->createHashArray();
-        $this->createAssociativeArray();        
+        $this->createAssociativeArray();     
+        $this->binarySearchTree = $this->createBinaryArray();  
     }
     
     private function createAssociativeArray(){
@@ -36,6 +44,46 @@ class HashTablesDemo
         return $hashArray;
     }
     
+    private function createBinaryArray(){
+        $sortArray = $this->searchableArray;
+        sort($sortArray);
+        $tree = new Tree();
+        foreach ($sortArray as $key => $name) {
+            $node = new Node($key, $name);
+            $tree->insert($node);
+        }
+        return $tree;
+    }
+    
+    public function binarySearchTreeTime(){
+        $startTime = microtime(true);
+        $this->binaryTreeFindNames();
+        $endTime = microtime(true);
+        $diffTime = $endTime - $startTime;
+        return $diffTime;
+    }
+    
+    private function binaryTreeFindNames(){
+        for ($i=1; $i < $this->loopTimes; $i++) {
+            //SELECT A DIFFERENT NAME FOR EACH LOOP
+            $selectedName = $this->selectName($i);
+            // RESET NODE
+            $this->node = $this->binarySearchTree->getRoot();
+            while (true) {        
+                $direction = strcasecmp( $this->node->getValue(), $selectedName);
+                if ($direction == 0 ) {
+                    break;
+                } elseif( $direction < 0  ) {
+                    // left
+                    $this->node = $this->node->getChild(1);
+                } else {
+                    $this->node = $this->node->getChild(-1);
+                }
+            }
+        }
+    }
+    
+    
     public function getLoopTimes(){
         return $this->loopTimes;
     }
@@ -48,17 +96,15 @@ class HashTablesDemo
         }
     }
     
-    
-    
-    public function bruteForceTime(){
+    public function linearSearchTime(){
         $startTime = microtime(true);
-        $this->bruteForceFindNames();
+        $this->linearSearchFindNames();
         $endTime = microtime(true);
         $diffTime = $endTime - $startTime;
         return $diffTime;
     }
     
-    private function bruteForceFindNames(){
+    private function linearSearchFindNames(){
         for ($i=1; $i < $this->loopTimes; $i++) {
             //SELECT A DIFFERENT NAME FOR EACH LOOP
             $selectedName = $this->selectName($i);

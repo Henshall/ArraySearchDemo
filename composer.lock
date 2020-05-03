@@ -1,0 +1,56 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "0c27c42d110ac0f0ada5fdb2fa553f15",
+    "packages": [
+        {
+            "name": "jihel/library-rbtree",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Jihell/LibraryRBTree.git",
+                "reference": "bbb69b2ead512113ced69be90f924b0d42c50532"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Jihell/LibraryRBTree/zipball/bbb69b2ead512113ced69be90f924b0d42c50532",
+                "reference": "bbb69b2ead512113ced69be90f924b0d42c50532",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jihel\\Library\\RBTree\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Joseph Lemoine",
+                    "email": "lemoine.joseph@gmail.com"
+                }
+            ],
+            "description": "A library to implement Red Black Tree",
+            "time": "2019-02-22T14:49:00+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "jihel/library-rbtree": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

@@ -18,10 +18,9 @@ We have the following Algorithms:
 
 4) binarySearchTreeTime - returns the amount of time (in seconds) it took search through a balanced binary search tree to find the element in the array. Its performed n number of times and the time complexity is O(h) where h is the height of the tree.
 
-to use php's built in associative array find a name on a list 'n' number of times. Time complexity closer to O(1)
-
 ### Application: 
-This is for demonstration purposes only. We can pretend that we have a database of users and their names and want to see how we can speed up the time it takes to find a certain name or get a list of names. We can see how the speed different in using a hash table vs just a regular select query.
+This is a teaching/demonstration tool to do a quick comparison between the time it takes to run different search algorithms.
+It is not intended for any other use. The application demonstrates the amount of time saved performing different types of searching and allows the user to understand how the size of an array and the chosen search algorithm affects its search time.
 
 ### Setup:
 Run the following commands to set up. You just need to update your composer to get the binary search tree package and then test out some of the example files.
